@@ -1,5 +1,6 @@
 package demo.mirror.com.socketdemo;
 
+import android.annotation.SuppressLint;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -92,7 +93,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
         //获取wifi服务
-        WifiManager wifiManager = (WifiManager) getSystemService(Context.WIFI_SERVICE);
+        @SuppressLint("WifiManagerLeak") WifiManager wifiManager = (WifiManager) getSystemService(Context.WIFI_SERVICE);
         //判断wifi是否开启
         if (!wifiManager.isWifiEnabled()) {
             wifiManager.setWifiEnabled(true);
@@ -298,11 +299,11 @@ public class MainActivity extends AppCompatActivity {
                 switch (msg.what) {
                     case 1:
                         SMS sms = ChangeUtil.getSms((byte[]) msg.obj);
-                        tvServerShow.setText("时间戳:" + sms.getTime() + "\n发送短消息的手机号:" + sms.getSendPhone() + "\n发送短消息的端口号:" + sms.getClientPort() + "\n接受短消息的手机号:" + sms.getReceivePhone() + "\n接受短消息的端口号:" + sms.getServerPort() + "\n消息内容:" + sms.getMessage() + "\n消息长度:" + sms.getMessageSize() + "\n短信编码格式:" + sms.getFormat());
+                        tvServerShow.setText("时间戳:" + sms.getTime() + "\n接受短消息的手机号:" + sms.getReceivePhone() + "\n接受短消息的端口号:" + sms.getServerPort() + "\n发送短消息的手机号:" + sms.getSendPhone() + "\n发送短消息的端口号:" + sms.getClientPort() + "\n消息内容:" + sms.getMessage() + "\n消息长度:" + sms.getMessageSize() + "\n短信编码格式:" + sms.getFormat());
                         break;
                     case 2:
                         SMS sms1 = (SMS) msg.obj;
-                        tvClientShow.setText("时间戳:" + sms1.getTime() + "\n发送短消息的手机号:" + sms1.getSendPhone() + "\n发送短消息的端口号:" + sms1.getClientPort() + "\n接受短消息的手机号:" + sms1.getReceivePhone() + "\n接受短消息的端口号:" + sms1.getServerPort() + "\n消息内容:" + sms1.getMessage() + "\n消息长度:" + sms1.getMessageSize() + "\n短信编码格式:" + sms1.getFormat());
+                        tvClientShow.setText("时间戳:" + sms1.getTime() + "\n接受短消息的手机号:" + sms1.getReceivePhone() + "\n接受短消息的端口号:" + sms1.getServerPort() + "\n消息内容:" + sms1.getMessage() + "\n消息长度:" + sms1.getMessageSize() + "\n发送短消息的手机号:" + sms1.getSendPhone() + "\n发送短消息的端口号:" + sms1.getClientPort() + "\n短信编码格式:" + sms1.getFormat());
 
                         break;
                     case 3:

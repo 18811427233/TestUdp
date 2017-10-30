@@ -51,20 +51,54 @@ public class ChangeUtil {
         sms.setTime(bytesToLong(timeBytes));
 
 		/* 接收短消息的手机号 */
+//        start = end;
+//        end = end + 11;
+//        byte[] getPhoneBytes = new byte[11];
+//        for (int i = 0; i < (end - start); i++) {
+//
+//            getPhoneBytes[i] = smsBytes[start + i];
+//        }
+//        sms.setReceivePhone(bytesToString(getPhoneBytes));
+
         start = end;
-        end = end + 11;
-        byte[] getPhoneBytes = new byte[11];
-        for (int i = 0; i < (end - start); i++) {
+        for (int i = start; i < smsBytes.length; i++) {
+
+            if (smsBytes[i] == (byte) 0) {
+
+                end = i + 1;
+                break;
+            }
+        }
+
+
+        byte[] getPhoneBytes = new byte[end - start - 1];
+        for (int i = 0; i < (end - start - 1); i++) {
 
             getPhoneBytes[i] = smsBytes[start + i];
         }
         sms.setReceivePhone(bytesToString(getPhoneBytes));
 
 		/* 发送短消息的手机号 */
+//        start = end;
+//        end = end + 11;
+//        byte[] sendPhoneBytes = new byte[11];
+//        for (int i = 0; i < (end - start); i++) {
+//
+//            sendPhoneBytes[i] = smsBytes[start + i];
+//        }
+//        sms.setSendPhone(bytesToString(sendPhoneBytes));
+
         start = end;
-        end = end + 11;
-        byte[] sendPhoneBytes = new byte[11];
-        for (int i = 0; i < (end - start); i++) {
+        for (int i = start; i < smsBytes.length; i++) {
+
+            if (smsBytes[i] == (byte) 0) {
+
+                end = i + 1;
+                break;
+            }
+        }
+        byte[] sendPhoneBytes = new byte[end - start - 1];
+        for (int i = 0; i < (end - start - 1); i++) {
 
             sendPhoneBytes[i] = smsBytes[start + i];
         }
@@ -146,21 +180,23 @@ public class ChangeUtil {
 
 		/* 接收短消息的手机号 */
         start = end;
-        end = end + 11;
         byte[] getPhoneBytes = sms.getReceivePhone().getBytes();
-        for (int i = 0; i < (end - start); i++) {
+        end = end + getPhoneBytes.length + 1;
+        for (int i = 0; i < (end - start - 1); i++) {
 
             smsBytes[start + i] = getPhoneBytes[i];
         }
+        smsBytes[end] = (byte) 0;
 
 		/* 发送短消息的手机号 */
         start = end;
-        end = end + 11;
         byte[] sendPhoneBytes = sms.getSendPhone().getBytes();
-        for (int i = 0; i < (end - start); i++) {
+        end = end + sendPhoneBytes.length + 1;
+        for (int i = 0; i < (end - start - 1); i++) {
 
             smsBytes[start + i] = sendPhoneBytes[i];
         }
+        smsBytes[end] = (byte) 0;
 
 		/* 消息长度 */
         start = end;
@@ -195,10 +231,7 @@ public class ChangeUtil {
     /**
      * byte数组中取int数值，本方法适用于(低位在前，高位在后)的顺序，和和intToBytes（）配套使用
      *
-     * @param src
-     *            byte数组
-     * @param offset
-     *            从数组的第offset位开始
+     * @param src byte数组
      * @return int数值
      */
     private static int bytesToInt(byte[] src) {
@@ -210,8 +243,7 @@ public class ChangeUtil {
     /**
      * 将int数值转换为占四个字节的byte数组，本方法适用于(低位在前，高位在后)的顺序。 和bytesToInt（）配套使用
      *
-     * @param value
-     *            要转换的int值
+     * @param value 要转换的int值
      * @return byte数组
      */
     private static byte[] intToBytes(int value) {

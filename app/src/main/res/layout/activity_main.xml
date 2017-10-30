@@ -131,53 +131,6 @@
                     />
             </LinearLayout>
 
-            <!--发送手机号-->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="发送手机号："
-                    android:textSize="15sp"
-                    />
-
-                <EditText
-                    android:id="@+id/et_client_send"
-                    android:layout_width="120dp"
-                    android:layout_height="30dp"
-                    android:background="@drawable/shape_box_white"
-                    android:hint="发送手机号"
-                    android:inputType="phone"
-                    android:maxLength="11"
-                    android:paddingLeft="5dp"
-                    android:paddingRight="5dp"
-                    android:textSize="15sp"
-                    />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:text="port："
-                    android:textSize="15sp"
-                    />
-
-                <EditText
-                    android:id="@+id/et_send_port"
-                    android:layout_width="60dp"
-                    android:layout_height="30dp"
-                    android:background="@drawable/shape_box_white"
-                    android:inputType="number"
-                    android:paddingLeft="5dp"
-                    android:paddingRight="5dp"
-                    android:textSize="15sp"
-                    />
-            </LinearLayout>
-
             <!--接收手机号-->
             <LinearLayout
                 android:layout_width="match_parent"
@@ -226,6 +179,53 @@
             </LinearLayout>
 
             <!--发送手机号-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="发送手机号："
+                    android:textSize="15sp"
+                    />
+
+                <EditText
+                    android:id="@+id/et_client_send"
+                    android:layout_width="120dp"
+                    android:layout_height="30dp"
+                    android:background="@drawable/shape_box_white"
+                    android:hint="发送手机号"
+                    android:inputType="phone"
+                    android:maxLength="11"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp"
+                    android:textSize="15sp"
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:text="port："
+                    android:textSize="15sp"
+                    />
+
+                <EditText
+                    android:id="@+id/et_send_port"
+                    android:layout_width="60dp"
+                    android:layout_height="30dp"
+                    android:background="@drawable/shape_box_white"
+                    android:inputType="number"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp"
+                    android:textSize="15sp"
+                    />
+            </LinearLayout>
+
+            <!--短信编码-->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

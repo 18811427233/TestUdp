@@ -75,7 +75,6 @@ public class UdpServer implements Runnable {
 
                             String string = new String(dpRcv.getData(), dpRcv.getOffset(), dpRcv.getLength());
                             Log.i("SocketInfo", "收到信息：" + string);
-                            Log.e("========","=====000====");
                             Intent intent = new Intent();
                             intent.setAction("udpReceiver");
                             intent.putExtra("udpReceiver", dpRcv.getData());
